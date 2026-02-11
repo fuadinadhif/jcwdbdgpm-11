@@ -7,7 +7,7 @@
 
   const myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (true) {
+      if (false) {
         return resolve("Promise success");
       } else {
         return reject("Promise rejected");
@@ -16,11 +16,23 @@
   });
 
   // 1. Dot then
-  console.log(myPromise);
+  // console.log(myPromise);
 
   // myPromise
   //   .then((data) => console.log(data))
   //   .catch((error) => console.error(error));
+
+  // 2. Async await
+  async function runMyPromise() {
+    try {
+      const data = await myPromise;
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  runMyPromise();
 
   /* --------------------------------- Example -------------------------------- */
   function boilWater() {
@@ -53,8 +65,21 @@
     });
   }
 
-  boilWater()
-    .then(() => addCoffee())
-    .then(() => serveCoffee())
-    .then(() => console.log("Enjoy!"));
+  // boilWater()
+  //   .then(() => addCoffee())
+  //   .then(() => serveCoffee())
+  //   .then(() => console.log("Enjoy!"));
+
+  async function makeCoffee() {
+    try {
+      await boilWater();
+      await addCoffee();
+      await serveCoffee();
+      console.log("Enjoy!");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  makeCoffee();
 }
