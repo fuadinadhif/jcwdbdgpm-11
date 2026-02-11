@@ -10,7 +10,7 @@ function processUser(name: string, callback: (name: string) => string): string {
 
 const result = processUser("Madha", greet);
 
-console.log(result);
+// console.log(result);
 
 /*
 1. 
@@ -48,3 +48,56 @@ const result = `Hello ${"Madha"}!`
 7.
 console.log("Hello Madha!")
 */
+
+// Kenapa kita butuh callback?
+// Karena kita kadang punya beberapa fungsi yang ingin kita atur urutan eksekusi-nya
+
+// 1. Without callback
+// function boilWater() {
+//   const delay = Math.ceil(Math.random() * 2000);
+//   setTimeout(() => console.log("Water boiled"), delay);
+// }
+
+// function addCoffe() {
+//   const delay = Math.ceil(Math.random() * 2000);
+//   setTimeout(() => console.log("Coffee added"), delay);
+// }
+
+// function serveCoffee() {
+//   const delay = Math.ceil(Math.random() * 2000);
+//   setTimeout(() => console.log("Coffee served ☕"), delay);
+// }
+
+// boilWater();
+// addCoffe();
+// serveCoffee();
+
+// 2. With callback
+function boilWater(callback: () => void) {
+  const delay = Math.ceil(Math.random() * 2000);
+  setTimeout(() => {
+    console.log("Water boiled");
+    callback();
+  }, delay);
+}
+
+function addCoffe(callback: () => void) {
+  const delay = Math.ceil(Math.random() * 2000);
+  setTimeout(() => {
+    console.log("Coffee added");
+    callback();
+  }, delay);
+}
+
+function serveCoffee() {
+  const delay = Math.ceil(Math.random() * 2000);
+  setTimeout(() => {
+    console.log("Coffee served ☕");
+  }, delay);
+}
+
+boilWater(() => {
+  addCoffe(() => {
+    serveCoffee();
+  });
+});
