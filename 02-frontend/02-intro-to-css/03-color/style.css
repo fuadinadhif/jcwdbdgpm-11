@@ -1,0 +1,41 @@
+section {
+  margin-bottom: 100px;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin: 10px 0;
+}
+
+#html-color div:first-child {
+  background-color: wheat;
+}
+#html-color div:nth-child(2) {
+  background-color: tomato;
+}
+#html-color div:last-child {
+  background-color: fuchsia;
+}
+
+#hexcode div:nth-child(1) {
+  background-color: #000;
+}
+#hexcode div:nth-child(2) {
+  background-color: #97789a;
+}
+#hexcode div:nth-child(3) {
+  background-color: #ff1;
+}
+
+#rgb div:nth-child(1) {
+  background-color: rgb(0, 0, 0);
+}
+#rgb div:nth-child(2) {
+  background-color: rgb(255, 0, 255);
+  opacity: 0.1;
+}
+#rgb div:nth-child(3) {
+  background-color: rgba(255, 0, 255, 0.1);
+}

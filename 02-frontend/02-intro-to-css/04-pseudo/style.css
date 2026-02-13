@@ -1,0 +1,26 @@
+#hover {
+  background-color: yellow;
+}
+#hover:hover {
+  background-color: red;
+}
+
+a {
+  color: red;
+}
+a:visited {
+  color: green;
+}
+
+h1::before {
+  content: "👩🏼";
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li::before {
+  content: "🎅🏼";
+}

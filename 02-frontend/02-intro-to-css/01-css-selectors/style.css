@@ -1,0 +1,35 @@
+p {
+  color: red;
+}
+
+#small-text {
+  color: brown;
+}
+
+.time {
+  font-style: italic;
+}
+
+* {
+  /* border: 1px dashed black; */
+  border-width: 1px;
+  border-style: dashed;
+  border-color: yellow;
+}
+
+input[type="password"] {
+  height: 100px;
+}
+
+p,
+time {
+  text-decoration: line-through;
+}
+
+div span {
+  font-size: 72px;
+}
+
+.box > p {
+  background-color: black;
+}
