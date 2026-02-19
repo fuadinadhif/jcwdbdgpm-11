@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Relative</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #parent {
+        width: 700px;
+        height: 200px;
+        background-color: red;
+      }
+
+      #children1 {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+        position: relative;
+        top: 50px;
+      }
+
+      #children2 {
+        width: 200px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="children1"></div>
+      <div id="children2"></div>
+    </div>
+  </body>
+</html>
+
+<!-- NOTES
+JENIS POSITION:
+1. Static: Posisi default. TBLR tidak ada efek-nya
+2. Relative: TBLR tergantung posisi original
+3. Absolute: TBLR tergantung posisi parent non static
+4. Fixed
+5. Sticky
+-->

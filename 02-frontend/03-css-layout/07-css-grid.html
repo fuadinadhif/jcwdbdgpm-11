@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid</title>
+
+    <style>
+      #parent {
+        border: 1px solid red;
+        height: 100vh;
+        width: 100%;
+
+        display: grid;
+        /* grid-template-columns: 100px 200px 300px 400px; */
+        /* grid-template-columns: 1fr 1fr 2fr; */
+        grid-template-columns: repeat(4, 1fr);
+        /* grid-template-rows: 200px 100px; */
+        /* grid-auto-rows: 50px; */
+        gap: 16px;
+        /* justify-items: center;
+        align-items: center; */
+        place-items: center;
+      }
+
+      .box {
+        /* height: 100px; */
+        /* width: 100px; */
+        font-family: monospace;
+        font-size: 64px;
+        color: white;
+      }
+
+      #parent div:nth-child(odd) {
+        background-color: red;
+      }
+      #parent div:nth-child(even) {
+        background-color: green;
+      }
+
+      #parent div:nth-child(1) {
+        grid-column: span 2;
+      }
+      #parent div:nth-child(3) {
+        grid-row: span 2;
+      }
+      #parent div:nth-child(5) {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+  </body>
+</html>

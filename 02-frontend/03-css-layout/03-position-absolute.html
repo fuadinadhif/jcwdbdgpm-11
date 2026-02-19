@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Absolute</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #parent {
+        width: 700px;
+        height: 200px;
+        background-color: red;
+        position: relative;
+      }
+
+      #children1 {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+        position: absolute;
+        top: 50px;
+        z-index: 10;
+      }
+
+      #children2 {
+        width: 200px;
+        height: 100px;
+        background-color: orange;
+        position: relative;
+        z-index: 2;
+      }
+
+      #parent-center {
+        width: 100%;
+        height: 800px;
+        background-color: black;
+        position: relative;
+      }
+
+      #children-center {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="children1"></div>
+      <div id="children2"></div>
+    </div>
+
+    <div id="parent-center">
+      <div id="children-center"></div>
+    </div>
+  </body>
+</html>
+
+<!-- NOTES
+JENIS POSITION:
+1. Static: Posisi default. TBLR tidak ada efek-nya
+2. Relative: TBLR tergantung posisi original
+3. Absolute: TBLR tergantung posisi parent non static
+4. Fixed
+5. Sticky
+
+Z COORDINATE:
+Urutan prioritas penempatan element paling atas:
+1. Positioned element > non positioned element
+2. Last element > previouse element
+3. z-index
+-->

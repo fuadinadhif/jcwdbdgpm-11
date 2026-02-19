@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS FlexBox</title>
+    <style>
+      #parent {
+        border: 1px solid red;
+        /* height: 100vh; */
+        width: 100%;
+
+        display: flex;
+        flex-direction: row-reverse;
+        /* flex-wrap: wrap; */
+
+        /* alignment primary/main axis */
+        justify-content: center;
+
+        /* alignment cross axis */
+        align-items: start;
+
+        /* gap: 10px; */
+        row-gap: 10px;
+        column-gap: 10px;
+      }
+
+      .box {
+        height: 100px;
+        width: 100px;
+        box-shadow: 10px 10px 0px 0px yellow;
+      }
+
+      #parent div:nth-child(1) {
+        background-color: red;
+        flex-grow: 1;
+      }
+      #parent div:nth-child(2) {
+        background-color: green;
+        flex-grow: 1;
+      }
+      #parent div:nth-child(3) {
+        background-color: blue;
+        flex-shrink: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+  </body>
+</html>
+
+<!-- NOTES 
+PARENT PROPERTIES:
+1. display
+2. flex-direction
+3. flex-wrap
+4. justify-content
+5. align-items
+
+CHILDREN PROPERTIES:
+1. flex-grow
+2. flex-shrink
+
+DISPLAY FLEX RULES:
+1. children akan diletakkan sesuai dengan flex direction property
+2. flexible size/placement
+-->
