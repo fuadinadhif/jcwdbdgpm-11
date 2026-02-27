@@ -26,6 +26,9 @@ export default function Header() {
           <li>
             <Link to="use-effect">Use Effect</Link>
           </li>
+          <li>
+            <Link to="session-storage">Session Storage</Link>
+          </li>
         </ul>
       </nav>
 

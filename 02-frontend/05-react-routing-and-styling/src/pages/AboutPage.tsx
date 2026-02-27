@@ -5,7 +5,9 @@ export default function AboutPage() {
     <>
       <Header />
       <main>
-        <h1>About Page</h1>
+        <h1 className="font-mono text-7xl font-bold text-[rgb(0,255,0)]">
+          About Page
+        </h1>
       </main>
     </>
   );
