@@ -1,0 +1,22 @@
+{
+  "name": "01-blog",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "node --watch src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.3",
+    "@types/pg": "^8.18.0",
+    "typescript": "^5.9.3"
+  }
+}
