@@ -78,6 +78,7 @@ CREATE TABLE articles (
   author_id INTEGER,
   title VARCHAR(255) NOT NULL UNIQUE,
   content TEXT NOT NULL,
+  likes INTEGER DEFAULT 0,
   created_at TIMESTAMP DEFAULT NOW(),
   CONSTRAINT fk_author
     FOREIGN KEY (author_id)
@@ -92,3 +93,36 @@ ADD CONSTRAINT fk_author
 FOREIGN KEY (author_id)
 REFERENCES authors(id)
 ON DELETE CASCADE;
+
+ALTER TABLE articles
+ADD COLUMN likes INTEGER DEFAULT 0;
+
+-- 3. Tambah data table authors dan articles
+INSERT INTO authors (id, name, email, password)
+VALUES
+  (1, 'Joko', 'joko@mail.com', 'Purwadhika123!'),
+  (2, 'Budi', 'budi@mail.com', 'Purwadhika123!'),
+  (3, 'Adi', 'adi@mail.com', 'Purwadhika123!');
+
+INSERT INTO articles (author_id, title, content, likes)
+VALUES
+  (1, 'The Art of Focus', 'Finding clarity in a world full of digital noise.', 45),
+  (1, 'Morning Rituals', 'How a simple cup of coffee can change your outlook.', 32),
+  (1, 'Tech Trends 2026', 'A deep dive into the latest AI and robotics shifts.', 78),
+  (1, 'Coffee vs. Tea', 'The age-old debate continues with new caffeine data.', 25),
+  (1, 'Weekend Getaways', 'Top five hidden gems for a quick road trip.', 56),
+  (1, 'Coding Best Practices', 'Why clean code is more important than fast code.', 89),
+  (1, 'The Future of Work', 'Remote, hybrid, or back to the office?', 41),
+  (2, 'Healthy Snacking', 'Quick bites that wont ruin your productivity.', 33),
+  (2, 'Minimalist Living', 'How decluttering your desk declutters your mind.', 62),
+  (2, 'Laughter Therapy', 'Why humor is essential for mental health.', 48),
+  (2, 'Digital Detox', 'Finding balance in our always-connected world.', 71),
+  (2, 'Productivity Hacks', 'Simple techniques to boost your daily output.', 55),
+  (2, 'Learning Curves', 'How to master new skills efficiently.', 39),
+  (2, 'Sleep Science', 'Understanding the importance of quality rest.', 64),
+  (3, 'Sustainable Living', 'Small changes for a better planet.', 52),
+  (3, 'Home Office Setup', 'Creating the perfect workspace at home.', 47),
+  (3, 'Financial Freedom', 'Building wealth through smart decisions.', 68),
+  (3, 'Travel Guide 2026', 'Must-visit destinations this year.', 73),
+  (3, 'Mental Wellness', 'Strategies for inner peace and happiness.', 58),
+  (3, 'Creative Writing', 'Unleashing your imagination on the page.', 42);
