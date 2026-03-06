@@ -3,6 +3,7 @@ import "dotenv/config";
 import express from "express";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client.js";
+import cors from "cors";
 
 const app = express();
 
@@ -13,6 +14,7 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter });
 
 /* ------------------------------- Middlewares ------------------------------ */
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json()); // middleware untuk mengambil data dari request client
 
 /* ---------------------------- Get all articles ---------------------------- */
