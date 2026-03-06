@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Article {
+  id         Int       @id @default(autoincrement())
+  author_id  Int?
+  title      String    @unique @db.VarChar(255)
+  content    String
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  likes      Int?      @default(0)
+
+  authors Author? @relation(fields: [author_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_author")
+
+  articleTags ArticleTag[]
+
+  @@map("articles")
+}
+
+model Author {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(250)
+  email      String    @unique @db.VarChar(250)
+  password   String    @db.VarChar(250)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  deleted_at DateTime?
+
+  articles Article[]
+  wallet   Wallet?
+
+  @@map("authors")
+}
+
+model Wallet {
+  id         Int      @id @default(autoincrement())
+  author_id  Int      @unique
+  balance    Decimal  @db.Decimal(10, 2)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+
+  author Author @relation(fields: [author_id], references: [id])
+
+  @@map("wallets")
+}
+
+model Tag {
+  id         Int      @id @default(autoincrement())
+  name       String
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @updatedAt
+
+  articleTags ArticleTag[]
+
+  @@map("tags")
+}
+
+model ArticleTag {
+  id         Int @id @default(autoincrement())
+  article_id Int
+  tag_id     Int
+
+  articles Article @relation(fields: [article_id], references: [id])
+  tags     Tag     @relation(fields: [tag_id], references: [id])
+
+  @@map("article_tags")
+}
