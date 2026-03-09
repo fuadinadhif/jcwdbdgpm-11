@@ -126,3 +126,46 @@ VALUES
   (3, 'Travel Guide 2026', 'Must-visit destinations this year.', 73),
   (3, 'Mental Wellness', 'Strategies for inner peace and happiness.', 58),
   (3, 'Creative Writing', 'Unleashing your imagination on the page.', 42);
+
+-- 4. Menghitung berapa banyak artikel yang setiap author punya (GROUP BY, HAVING, JOIN)
+-- Inner Join
+SELECT * FROM articles
+JOIN authors ON articles.author_id = authors.id;
+
+-- Right Join
+SELECT * FROM articles
+RIGHT JOIN authors ON articles.author_id = authors.id;
+
+-- Left Join
+SELECT * FROM articles
+LEFT JOIN authors ON articles.author_id = authors.id;
+
+SELECT author_id, COUNT(*) 
+FROM articles 
+GROUP BY author_id
+HAVING COUNT(*) > 5;
+
+SELECT articles.author_id, COUNT(articles), authors.name 
+FROM articles
+JOIN authors ON articles.author_id = authors.id
+GROUP BY author_id
+HAVING COUNT(*) > 5;
+
+-- QUIZ
+-- 1. Tampilkan title article bersama dengan nama penulisnya
+SELECT articles.title, authors.name 
+FROM articles 
+JOIN authors ON articles.author_id = authors.id;
+
+-- 2. Tampilkan nama author dan jumlah artikel yang dimiliki, urutkan dari yang terbanyak
+SELECT authors.name as author_name, COUNT(articles.id) as total_articles
+FROM authors
+LEFT JOIN articles ON authors.id = articles.author_id
+GROUP BY authors.id, authors.name
+ORDER BY total_articles DESC;
+
+-- 3. Pagination
+SELECT * FROM articles
+ORDER BY created_at
+LIMIT 3
+OFFSET 0;
