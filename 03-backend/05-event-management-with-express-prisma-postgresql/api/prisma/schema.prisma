@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Event {
+  objectId    String  @id @default(uuid())
+  title       String  @unique @db.VarChar(250)
+  description String  @db.Text
+  price       Decimal @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("events")
+}
