@@ -54,12 +54,16 @@ export async function login(req: Request, res: Response) {
       return res.status(400).json({ message: "Wrong credentials" });
 
     // 3. Membuat bukti login -> Token. JWT (JSON Web Token)
-    const payload = { id: existingUser.id, email: existingUser.email };
+    const payload = {
+      id: existingUser.id,
+      email: existingUser.email,
+      role: existingUser.role,
+    };
     const accessToken = jwt.sign(
       payload,
       process.env.JWT_SECRET_KEY as string,
       {
-        expiresIn: "5s",
+        expiresIn: "1d",
       },
     );
 
