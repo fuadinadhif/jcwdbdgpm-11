@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import express, { type Application } from "express";
+import cors from "cors";
 
 import authenticationRoutes from "./routes/auth.route";
 import protectedRoutes from "./routes/protected.route";
@@ -11,6 +12,7 @@ import { verifyToken } from "./middlewares/auth.middleware";
 const app: Application = express();
 
 // global middlewares
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use((req, res, next) => {
   console.log("Hello everybody!");
